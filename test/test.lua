@@ -54,8 +54,8 @@ end
 
 package.path = test_root..'\\..\\lua\\?.lua;'..package.path
 
-local logs_dir = test_root..'\\logs'
-assert(0 == vim.fn.delete(logs_dir, 'rf'))
+local logs_dir = test_root..'\\_logs'
+if 1 == vim.fn.isdirectory(logs_dir) then assert(0 == vim.fn.delete(logs_dir, 'rf')) end
 vim.uv.fs_mkdir(logs_dir, 1)
 local log_path_fmt = logs_dir..'\\%s.log'
 
